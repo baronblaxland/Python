@@ -1,0 +1,52 @@
+name = raw_input("Enter file:")
+if len(name) < 1 : name = "mbox-short.txt"
+handle = open(name)
+
+counts=dict()
+
+allwords=list()
+newseperated=list()
+for line in handle:
+    words=line.rstrip()
+    words=line.split()
+    #print words
+    if words == []:continue
+        
+    if words[0] != "From": continue  
+    
+    allwords.append(words[5])
+
+
+for x in xrange (len(allwords)):
+
+    seperated=allwords[x].split(":")
+    
+    newseperated.append(seperated[0])
+#print newseperated
+
+for word in newseperated:
+    counts[word]=counts.get(word,0)+1
+        
+    
+lst = list()
+
+for key, val in counts.items():
+    lst.append( (key,val))
+    
+lst.sort()
+
+for val, key in lst[:]:
+    print val,key
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
